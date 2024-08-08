@@ -1,53 +1,40 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { Slot, SplashScreen, Stack } from "expo-router";
+import React, { useEffect } from "react";
+import { Text } from "react-native";
+import { useFonts } from "expo-font";
 
-export default function App() {
-  const handleSubmit = () => {
-    alert("First fill the data ");
-  };
+SplashScreen.preventAutoHideAsync();
+
+const RootLayout = () => {
+  const [fontsLoaded, error] = useFonts({
+    "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
+    "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
+    "Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
+    "Poppins-ExtraLight": require("../assets/fonts/Poppins-ExtraLight.ttf"),
+    "Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
+    "Poppins-Medium": require("../assets/fonts/Poppins-Medium.ttf"),
+    "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
+    "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
+  });
+
+  useEffect(() => {
+    if (error) throw error;
+
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, error]);
+
+  if (!fontsLoaded && !error) {
+    return null;
+  }
 
   return (
-    <View style={styles.container}>
-      <Text>Welcome to Syspro ERP APP</Text>
-      <TextInput style={styles.username} placeholder="Enter your username" />
-      <TextInput style={styles.password} placeholder="Enter Your Password" />
-      <View style={styles.submitBtn}>
-        <Button
-          onPress={handleSubmit}
-          style={styles.submitBtn}
-          title="Submit"
-        />
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+    </Stack>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffff",
-  },
-
-  username: {
-    padding: 10,
-    color: "red",
-    border: 20,
-    borderColor: "red",
-    borderTopColor: "green",
-  },
-
-  password: {
-    padding: 10,
-    color: "green",
-  },
-
-  submitBtn: {
-    marginTop: 30,
-    borderRadius: 20,
-    backgroundColor: "red",
-  },
-});
+export default RootLayout;
