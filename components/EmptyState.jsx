@@ -20,7 +20,7 @@ const EmptyState = ({ title, subtitle }) => {
         <CustomButton
           title="Create a Content"
           handlePress={() => router.push("/create")}
-          containerStyles="w-full my-5"
+          containerStyles="w-full mx-5 px-5 mt-5"
         />
       </View>
     </View>
