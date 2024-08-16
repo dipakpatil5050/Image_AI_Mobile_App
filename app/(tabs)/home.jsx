@@ -263,7 +263,6 @@ const Home = () => {
 
   const onRefresh = async () => {
     setRefreshing(true);
-    // Simulate fetching data with delay
     setRefreshing(false);
   };
 

@@ -44,7 +44,7 @@ const VideoCard = ({ video: { title, thumbnail, video } }) => {
       ) : (
         <TouchableOpacity
           activeOpacity={0.7}
-          onPress={() => setPlay(true)}
+          // onPress={() => setPlay(true)}
           className="w-full h-60 rounded-xl mt-3 relative flex justify-center items-center"
         >
           <Image
@@ -53,11 +53,11 @@ const VideoCard = ({ video: { title, thumbnail, video } }) => {
             resizeMode="cover"
           />
 
-          <Image
+          {/* <Image
             source={icons.play}
             className="w-12 h-12 absolute"
             resizeMode="contain"
-          />
+          /> */}
         </TouchableOpacity>
       )}
     </View>

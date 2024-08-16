@@ -56,7 +56,7 @@ const TrendingItem = ({ activeItem, item }) => {
             resizeMode="cover"
           />
 
-          <Image source={icons.play} className="w-12 h-12 absolute" />
+          {/* <Image source={icons.play} className="w-12 h-12 absolute" /> */}
         </TouchableOpacity>
       )}
     </Animatable.View>
